@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_relative_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#CCFFCC"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity$MyFragment">
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:id="@+id/logo"
+        />
+
+    <Button
+        android:id="@+id/take_picture_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/camera"
+        android:text="@string/take_pic"
+        android:textSize="14dp"/>
+
+    <Button
+        android:id="@+id/choose_picture_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/logo"
+        android:layout_alignRight="@+id/logo"
+        android:text="@string/choose_pic"
+        android:background="@drawable/photos"
+        android:textSize="14dp"/>
+
+    <Button
+        android:id="@+id/story_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/logo"
+        android:layout_alignLeft="@+id/logo"
+        android:text="@string/story"
+        android:background="@drawable/book"
+        android:textSize="14dp"/>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Olin Admissions</string>
+    <string name="action_settings">Settings</string>
+    <string name="take_pic">Take a picture!</string>
+    <string name="choose_pic">Choose a picture from your library!</string>
+    <string name="story">Write a story!</string>
+    <string name="caption">Caption</string>
+    <string name="title">Title of Post</string>
+    <string name="upload">Upload!</string>
+    <string name="tag">Enter Tags Here</string>
+    <string name="location">Location</string>
+    <string name="building_prompt">Building</string>
+    <string name="floor_prompt">Floor</string>
+    <string name="room_prompt">Room</string>
+    <string name="exit_button">EXIT</string>
+    <string name="back">BACK</string>
+
+</resources>
