@@ -28,7 +28,7 @@ public class CloudinaryApi {
     public void UploadImages (String filename, String timestamp) throws IOException, NoSuchAlgorithmException {
         try {
             String sig = "public_id=" + timestamp + "&timestamp=" + timestamp + "xPE3O1CPu04ryh5uHj_TvI4xcc0";
-            String hashSig = AeSimpleSHA1.SHA1(sig);
+            String hashSig = Utils.SHA1(sig);
 
 
             HttpClient client = new DefaultHttpClient();

@@ -26,7 +26,7 @@ public class StoryViewFragment extends Fragment {
         final TextView storyTitle = (TextView) rootView.findViewById(R.id.title_story_view);
         final TextView storyText = (TextView) rootView.findViewById(R.id.story_text_view);
         final TextView storyLocation = (TextView) rootView.findViewById(R.id.story_view_location);
-        final Button backButton = (Button) rootView.findViewById(R.id.story_back_button);
+       // final Button backButton = (Button) rootView.findViewById(R.id.story_back_button);
 
         //fill in textviews
         storyTitle.setText(story.get_title());

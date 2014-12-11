@@ -77,9 +77,12 @@ public class StoryUploadFragment extends Fragment {
                         newItemMap.put("story_text", storyTextEditText.getText().toString());
                         newItemMap.put("tags", storyTagEditText.getText().toString());
                         newItemMap.put("location", storyLocationEditText.getText().toString());
-                        newItemMap.put("image", "N/A");
+                        newItemMap.put("image_public_url", "N/A");
+                        newItemMap.put("image_secure_url", "N/A");
+                        newItemMap.put("image_public_id", "N/A");
+                        newItemMap.put("image_signature", "N/A");
                         newItemMap.put("image_caption", "N/A");
-                        newItemMap.put("date", "November");
+                        newItemMap.put("date", Utils.getDate());
 
                         firebase.child(storyTitleEditText.getText().toString()).setValue(newItemMap);
                         //activity.switchFragment(new TabMenu());

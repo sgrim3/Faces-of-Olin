@@ -32,6 +32,6 @@ dependencies {
     compile 'com.android.support:support-v4:21.0.0'
 //    compile 'com.google.android.gms:play-services:6.1.71'
     compile 'com.firebase:firebase-client-android:2.0.3+'   // Dependency for Firebase
-
+    compile 'com.mcxiaoke.volley:library:1.0.6'
     compile files('libs/cloudinaryandroid-1.0.2.jar')
 }

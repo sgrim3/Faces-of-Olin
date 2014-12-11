@@ -1,6 +1,7 @@
 package com.example.root.facesofolin;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v4.app.Fragment;
+import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -26,10 +28,10 @@ public class StoryList extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_story_list, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_story_list, container, false);
 
         final CustomList adapter = new CustomList(this.getActivity(), allStories, allTitles);
 
@@ -68,6 +70,21 @@ public class StoryList extends Fragment {
                                     int position, long id) {
 
                 //if story, switch to story, if image switch to image
+
+//                Dialog dialog = new Dialog(getActivity());
+//                dialog.setTitle("Dialog");
+//
+//                TextView storyTitle = (TextView) rootView.findViewById(R.id.title_story_view);
+//                final TextView storyText = (TextView) rootView.findViewById(R.id.story_text_view);
+//                final TextView storyLocation = (TextView) rootView.findViewById(R.id.story_view_location);
+//                // final Button backButton = (Button) rootView.findViewById(R.id.story_back_button);
+//
+//                //fill in textviews
+//                storyTitle.setText(allStories.get(position).get_title());
+//                storyText.setText(allStories.get(position).get_storytext());
+//                storyLocation.setText(allStories.get(position).get_location());
+//                dialog.setContentView(R.layout.fragment_story_view);
+//                dialog.show();
                 //activity.switchFragment(new StoryViewFragment(allStories.get(position)));
             }
         });

@@ -36,6 +36,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
                 /* Starts Firebase */
         Firebase.setAndroidContext(this);
 

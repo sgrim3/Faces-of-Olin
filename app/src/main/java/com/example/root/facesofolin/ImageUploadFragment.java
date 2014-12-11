@@ -11,6 +11,11 @@ import android.widget.EditText;
 
 import com.firebase.client.Firebase;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ImageUploadFragment extends Fragment {
     MainActivity activity;
 
@@ -21,9 +26,9 @@ public class ImageUploadFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_image_upload, container, false);
         final EditText imageTitleEditText = (EditText) rootView.findViewById(R.id.title_image);
         final Button uploadImageButton = (Button) rootView.findViewById(R.id.upload_image);
-        final EditText imageCaptionEditText = (EditText) rootView.findViewById(R.id.caption_image);
-        final EditText imageTagEditText = (EditText) rootView.findViewById(R.id.enter_tag_picture);
-        final EditText imageLocationEditText = (EditText) rootView.findViewById(R.id.image_upload_location);
+        final EditText imageCaptionEditText = (EditText) rootView.findViewById(R.id.caption_text);
+        final EditText imageTagEditText = (EditText) rootView.findViewById(R.id.enter_tags1);
+        final EditText imageLocationEditText = (EditText) rootView.findViewById(R.id.enter_location1);
 //        final EditText imageBuildingEditText = (EditText) rootView.findViewById(R.id.enter_building_picture);
 //        final EditText imageFloorEditText = (EditText) rootView.findViewById(R.id.enter_floor_picture);
 //        final EditText imageRoomEditText = (EditText) rootView.findViewById(R.id.enter_room_picture);
@@ -85,19 +90,35 @@ public class ImageUploadFragment extends Fragment {
         uploadImageButton.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick (View view) {
-                        firebase.setValue(imageTitleEditText.getText().toString());
-                        firebase.child("imageCaption").setValue(imageCaptionEditText.getText().toString());
-                        firebase.child("tags").setValue(imageTagEditText.getText().toString());
-                        firebase.child("location").setValue(imageLocationEditText.getText().toString());
-                        firebase.child("image").setValue("thing");
-                        firebase.child("storyText").setValue("N/A");
-                        firebase.child("date").setValue("November");
+                        try {
+                            CloudinaryAPIVolley.UploadImages("hi", "hi", new ResponseInformationCallback() {
+                                @Override
+                                public void handleResponse(String public_url, String secure_url, String public_id, String signature) {
+                                    Map<String, String> newItemMap = new HashMap<String, String>();
+                                    Map<String, Map<String, String>> newTitle = new HashMap<String, Map<String, String>>();
+
+                                    newItemMap.put("story_text", "N/A");
+                                    newItemMap.put("tags", imageTagEditText.getText().toString());
+                                    newItemMap.put("location", imageLocationEditText.getText().toString());
+                                    newItemMap.put("image_public_url", public_url);
+                                    newItemMap.put("image_secure_url", secure_url);
+                                    newItemMap.put("image_public_id", public_id);
+                                    newItemMap.put("image_signature", signature);
+                                    newItemMap.put("image_caption", imageCaptionEditText.getText().toString());
+                                    newItemMap.put("date", Utils.getDate());
+
+                                    firebase.child(imageTitleEditText.getText().toString()).setValue(newItemMap);
+                                }
+                            });
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        } catch (NoSuchAlgorithmException e) {
+                            e.printStackTrace();
+                        }
 
                         //activity.switchFragment(new UploadHome());
                     }
         });
-
-
 
 
         return rootView;
