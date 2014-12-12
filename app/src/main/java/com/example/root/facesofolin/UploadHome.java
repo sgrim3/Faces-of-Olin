@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,10 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UploadHome extends Fragment {
 
@@ -103,24 +107,24 @@ public class UploadHome extends Fragment {
             cursor.moveToFirst();
 
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
+            final String picturePath = cursor.getString(columnIndex);
+
             try {
-                //figure out what context should be
-//                cloudinaryAPIVolley.UploadImages(picturePath, cloudinaryAPIVolley.getTimestamp());
-                cloudinaryApi.UploadImages(picturePath, cloudinaryApi.getTimestamp());
-            } catch (IOException e) {
+                Log.d("Cloudinary", "made it to upload " +picturePath );
+                CloudinaryAPIVolley.UploadImages(picturePath, Utils.getTimestamp(), new ResponseInformationCallback() {
+                    @Override
+                    public void handleResponse(String public_url, String secure_url, String public_id, String signature) {
+                        System.out.println(public_id);
+                        Log.d("Cloudinary",picturePath);
+                    }
+                });
+            } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             } catch (NoSuchAlgorithmException e) {
                 e.printStackTrace();
             }
-//            try {
-//                cloudinaryStuff.UploadImages(picturePath);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            Log.d("cloudinary", "I AM UPLOADING");
-//            DropboxStuff.uploadToDropbox(picturePath);
-//            Log.d("dropbox", "I HAVE UPLOADED");
+
+
             cursor.close();
             //activity.switchFragment(new ImageUploadFragment());
 

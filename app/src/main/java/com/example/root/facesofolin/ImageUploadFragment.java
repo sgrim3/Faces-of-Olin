@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.cloudinary.Util;
 import com.firebase.client.Firebase;
 
 import java.io.UnsupportedEncodingException;
@@ -91,7 +92,8 @@ public class ImageUploadFragment extends Fragment {
                 new View.OnClickListener(){
                     public void onClick (View view) {
                         try {
-                            CloudinaryAPIVolley.UploadImages("hi", "hi", new ResponseInformationCallback() {
+                            //TODO replace "hi" with picturepath from UploadHome
+                            CloudinaryAPIVolley.UploadImages("hi", Utils.getTimestamp(), new ResponseInformationCallback() {
                                 @Override
                                 public void handleResponse(String public_url, String secure_url, String public_id, String signature) {
                                     Map<String, String> newItemMap = new HashMap<String, String>();

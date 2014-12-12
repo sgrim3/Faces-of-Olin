@@ -17,5 +17,6 @@
     <string name="exit_button">EXIT</string>
     <string name="back">BACK</string>
     <string name="enter_location">Enter Location</string>
+    <string name="post_title">Title of Post</string>
 
 </resources>
