@@ -3,6 +3,7 @@ package com.example.root.facesofolin;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,95 +31,28 @@ public class ImageUploadFragment extends Fragment {
         final EditText imageCaptionEditText = (EditText) rootView.findViewById(R.id.caption_text);
         final EditText imageTagEditText = (EditText) rootView.findViewById(R.id.enter_tags1);
         final EditText imageLocationEditText = (EditText) rootView.findViewById(R.id.enter_location1);
-//        final EditText imageBuildingEditText = (EditText) rootView.findViewById(R.id.enter_building_picture);
-//        final EditText imageFloorEditText = (EditText) rootView.findViewById(R.id.enter_floor_picture);
-//        final EditText imageRoomEditText = (EditText) rootView.findViewById(R.id.enter_room_picture);
-
-//        final Button buildingButton = (Button) rootView.findViewById(R.id.building_button);
-//        final Button floorButton = (Button) rootView.findViewById(R.id.floor_button);
-//        final Button roomButton = (Button) rootView.findViewById(R.id.room_button);
         final Firebase firebase = new Firebase("https://olinadmissionsapp.firebaseio.com/");
-
-        //Initialize firebase
-//        firebase.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot child : dataSnapshot.getChildren()) {
-//                    //ChatObject chat = new ChatObject(child.get)
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(FirebaseError firebaseError) {
-//
-//            }
-//        });
-
-//        //Building button click
-//        buildingButton.setOnClickListener(
-//                new View.OnClickListener() {
-//                    public void onClick(View view) {
-//                        //drop down menu
-//                        //send building to firebase
-//                        //pick proper floor array
-//                    }
-//                });
-//
-//        //Floor button click
-//        floorButton.setOnClickListener(
-//                new View.OnClickListener() {
-//                    public void onClick(View view) {
-//                        //default to "choose building first"
-//                        //drop down menu
-//                        //send floor to firebase
-//                        //choose correct room array
-//                    }
-//                });
-//
-//        //Room button click
-//        roomButton.setOnClickListener(
-//                new View.OnClickListener() {
-//                    public void onClick(View view) {
-//                        //default to "choose building and room first"
-//                        //drop down menu
-//                        //send room to firebase
-//                    }
-//                });
-
-
-
-
         uploadImageButton.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick (View view) {
-                        try {
-                            //TODO replace "hi" with picturepath from UploadHome
-                            CloudinaryAPIVolley.UploadImages("hi", Utils.getTimestamp(), new ResponseInformationCallback() {
-                                @Override
-                                public void handleResponse(String public_url, String secure_url, String public_id, String signature) {
-                                    Map<String, String> newItemMap = new HashMap<String, String>();
-                                    Map<String, Map<String, String>> newTitle = new HashMap<String, Map<String, String>>();
+                        UploadHome uploadHome = new UploadHome();
+                        App.requestQueue.add(new CloudinaryFinal(uploadHome.picturepath, new CloudinaryFinal.StringCallback() {
+                            @Override
+                            public void gotURL(String url) {
+                                //TODO - Save to firebase
+                                Map<String, String> newItemMap = new HashMap<String, String>();
+                                Map<String, Map<String, String>> newTitle = new HashMap<String, Map<String, String>>();
 
-                                    newItemMap.put("story_text", "N/A");
-                                    newItemMap.put("tags", imageTagEditText.getText().toString());
-                                    newItemMap.put("location", imageLocationEditText.getText().toString());
-                                    newItemMap.put("image_public_url", public_url);
-                                    newItemMap.put("image_secure_url", secure_url);
-                                    newItemMap.put("image_public_id", public_id);
-                                    newItemMap.put("image_signature", signature);
-                                    newItemMap.put("image_caption", imageCaptionEditText.getText().toString());
-                                    newItemMap.put("date", Utils.getDate());
+                                newItemMap.put("story_text", "n/a");
+                                newItemMap.put("tags", imageTagEditText.getText().toString());
+                                newItemMap.put("location", imageLocationEditText.getText().toString());
+                                newItemMap.put("date", Utils.getDate());
 
-                                    firebase.child(imageTitleEditText.getText().toString()).setValue(newItemMap);
-                                }
-                            });
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
-                        } catch (NoSuchAlgorithmException e) {
-                            e.printStackTrace();
-                        }
+                                firebase.child(imageTitleEditText.getText().toString()).setValue(newItemMap);
+                            }
+                        }));
 
-                        //activity.switchFragment(new UploadHome());
+                                 //activity.switchFragment(new UploadHome());
                     }
         });
 

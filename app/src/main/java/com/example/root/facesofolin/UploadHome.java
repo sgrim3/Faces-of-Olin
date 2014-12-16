@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.AbstractCollection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -95,37 +96,10 @@ public class UploadHome extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        CloudinaryStuff cloudinaryStuff = new CloudinaryStuff();
-        CloudinaryApi cloudinaryApi = new CloudinaryApi();
-//        CloudinaryAPIVolley cloudinaryAPIVolley = new CloudinaryAPIVolley();
+
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == Activity.RESULT_OK && null != data) {
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+            MediaUtils.pickPicture(activity,data);
 
-            Cursor cursor = activity.getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
-            cursor.moveToFirst();
-
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            final String picturePath = cursor.getString(columnIndex);
-
-            try {
-                Log.d("Cloudinary", "made it to upload " +picturePath );
-                CloudinaryAPIVolley.UploadImages(picturePath, Utils.getTimestamp(), new ResponseInformationCallback() {
-                    @Override
-                    public void handleResponse(String public_url, String secure_url, String public_id, String signature) {
-                        System.out.println(public_id);
-                        Log.d("Cloudinary",picturePath);
-                    }
-                });
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            }
-
-
-            cursor.close();
             //activity.switchFragment(new ImageUploadFragment());
 
 //            Figure out where to put the picture
@@ -139,9 +113,9 @@ public class UploadHome extends Fragment {
                 // Image captured and saved to fileUri specified in the Intent
                 Toast.makeText(activity, "Image saved to:\n" +
                         fileUri, Toast.LENGTH_LONG).show();
-//                Log.d("dropbox", "I AM uPLOADING");
-//                DropboxStuff.uploadToDropbox(fileUri.toString());
-//                Log.d("dropbox", "I UPLOADED");
+
+                //TODO- send fileUri.toString() to imageUpload dialog
+                //fileUri = name of filepath that pic was saved to
 //                activity.switchFragment(new ImageUploadFragment());
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 // User cancelled the image capture
