@@ -38,6 +38,8 @@ public class UploadHome extends Fragment {
     private static final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 200;
     public static final int RESULT_LOAD_IMAGE = 1;
 
+    public String picturepath;
+
     MainActivity activity;
 
 
@@ -98,7 +100,8 @@ public class UploadHome extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == Activity.RESULT_OK && null != data) {
-            MediaUtils.pickPicture(activity,data);
+            picturepath = MediaUtils.pickPicture(activity,data);
+
 
             //activity.switchFragment(new ImageUploadFragment());
 

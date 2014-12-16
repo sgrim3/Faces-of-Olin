@@ -89,4 +89,8 @@ public class Utils {
     {
         return Base64.encodeToString(getBytesFromImagePath(image), Base64.DEFAULT);
     }
+
+    public static void viewPicture (String url) {
+
+    }
 }
