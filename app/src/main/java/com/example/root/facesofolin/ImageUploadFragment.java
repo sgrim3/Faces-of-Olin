@@ -42,8 +42,8 @@ public class ImageUploadFragment extends DialogFragment {
         final EditText imageCaptionEditText = (EditText) rootView.findViewById(R.id.caption_text);
 //        final EditText imageTagEditText = (EditText) rootView.findViewById(R.id.enter_tag_story);
         final EditText imageLocationEditText = (EditText) rootView.findViewById(R.id.story_upload_location);
-        final Firebase firebase = new Firebase("https://olinadmissionsapp.firebaseio.com/");
-
+//        final Firebase firebase = new Firebase("https://olinadmissionsapp.firebaseio.com/");
+        final Firebase firebase = new Firebase("https://boiling-inferno-4244.firebaseio.com/");
 
 
 //      code from "http://stackoverflow.com/questions/4181774/show-image-view-from-file-path-in-android"

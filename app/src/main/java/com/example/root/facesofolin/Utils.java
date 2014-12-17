@@ -2,8 +2,13 @@ package com.example.root.facesofolin;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.util.LruCache;
 import android.util.Base64;
 import android.util.Log;
+
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.Volley;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -95,10 +100,6 @@ public class Utils {
         return Base64.encodeToString(getBytesFromImagePath(image), Base64.DEFAULT);
     }
 
-    public static void viewPicture (String url) {
-
-    }
-
     public static Bitmap getBitmapFromURL(String src) {
         try {
             Log.e("src", src);
@@ -115,6 +116,50 @@ public class Utils {
             Log.e("Exception", e.getMessage());
             return null;
         }
+    }
+
+
+
+    public static class BitmapLruCache
+            extends LruCache<String, Bitmap>
+            implements ImageLoader.ImageCache {
+
+        public BitmapLruCache() {
+            this(getDefaultLruCacheSize());
+        }
+
+        public BitmapLruCache(int sizeInKiloBytes) {
+            super(sizeInKiloBytes);
+        }
+
+        @Override
+        protected int sizeOf(String key, Bitmap value) {
+            return value.getRowBytes() * value.getHeight() / 1024;
+        }
+
+        @Override
+        public Bitmap getBitmap(String url) {
+            return get(url);
+        }
+
+        @Override
+        public void putBitmap(String url, Bitmap bitmap) {
+            put(url, bitmap);
+        }
+
+        public static int getDefaultLruCacheSize() {
+            final int maxMemory =
+                    (int) (Runtime.getRuntime().maxMemory() / 1024);
+            final int cacheSize = maxMemory / 8;
+
+            return cacheSize;
+        }
+    }
+
+    public void imageView (){
+        ImageLoader.ImageCache imageCache = new BitmapLruCache();
+        ImageLoader mImageLoader = new ImageLoader(App.requestQueue, imageCache);
+
     }
 
 

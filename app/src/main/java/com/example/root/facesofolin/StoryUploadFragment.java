@@ -86,7 +86,8 @@ public class StoryUploadFragment extends DialogFragment {
 //                    }
 //                });
 
-        final Firebase firebase = new Firebase("https://olinadmissionsapp.firebaseio.com/stories");
+//        final Firebase firebase = new Firebase("https://olinadmissionsapp.firebaseio.com/stories");
+        final Firebase firebase = new Firebase("https://boiling-inferno-4244.firebaseio.com/");
 
         //Upload button click
         uploadStoryButton.setOnClickListener(

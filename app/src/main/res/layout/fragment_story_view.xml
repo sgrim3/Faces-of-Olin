@@ -30,7 +30,7 @@
         android:layout_height="300dp"
         android:layout_below="@id/title_story_view" />
 
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/image_view"
         android:layout_width="fill_parent"
         android:layout_height="225dp"

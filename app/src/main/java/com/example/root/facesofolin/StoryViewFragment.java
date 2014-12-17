@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.NetworkImageView;
+
 public class StoryViewFragment extends DialogFragment {
     Story story;
     MainActivity activity;
@@ -40,7 +42,8 @@ public class StoryViewFragment extends DialogFragment {
         final TextView storyText = (TextView) rootView.findViewById(R.id.story_text_view);
         final TextView storyLocation = (TextView) rootView.findViewById(R.id.story_view_location);
         final TextView imageCaption = (TextView) rootView.findViewById(R.id.caption_view);
-        final ImageView imageView = (ImageView) rootView.findViewById(R.id.image_view);
+//        final ImageView imageView = (ImageView) rootView.findViewById(R.id.image_view);
+
 
 
         //fill in views
@@ -49,10 +52,11 @@ public class StoryViewFragment extends DialogFragment {
         storyLocation.setText(story.get_location());
         imageCaption.setText(story.get_image_caption());
 
+
         //Get image
 
-        Bitmap bimage = Utils.getBitmapFromURL(story.get_image_url());
-        imageView.setImageBitmap(bimage);
+        NetworkImageView imgAvatar = (NetworkImageView) rootView.findViewById(R.id.image_view);
+        imgAvatar.setImageUrl(story.get_image_url(), App.mImageLoader);
 
 
 
