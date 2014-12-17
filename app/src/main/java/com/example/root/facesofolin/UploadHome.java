@@ -62,6 +62,10 @@ public class UploadHome extends Fragment {
                     public void onClick(View view) {
                         //switch to story fragment
                         //activity.switchFragment(new StoryUploadFragment());
+
+                        StoryUploadFragment myDiag=new StoryUploadFragment();
+                        myDiag.show(getFragmentManager(),"Diag");
+
                     }
                 });
 

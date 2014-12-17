@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import com.firebase.client.Firebase;
 
+import java.util.ArrayList;
+
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
     /**
@@ -31,6 +33,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
      * time.
      */
     ViewPager mViewPager;
+
+    private ArrayList<android.app.Fragment> activeFragments = new ArrayList<android.app.Fragment>();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,4 +138,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             }
         }
     }
+
+
 }

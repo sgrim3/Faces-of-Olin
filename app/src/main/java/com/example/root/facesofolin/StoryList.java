@@ -45,7 +45,7 @@ public class StoryList extends Fragment {
                     String story_text = child.child("story_text").getValue().toString();
                     String date = child.child("date").getValue().toString();
                     String location = child.child("location").getValue().toString();
-                    String image = child.child("image").getValue().toString();
+                    String image = child.child("image_url").getValue().toString();
                     String image_caption = child.child("image_caption").getValue().toString();
 
                     Story storyItem = new Story(title, location, story_text, date, image, image_caption);

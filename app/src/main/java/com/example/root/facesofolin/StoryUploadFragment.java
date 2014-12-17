@@ -3,6 +3,7 @@ package com.example.root.facesofolin;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import com.firebase.client.Firebase;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StoryUploadFragment extends Fragment {
+public class StoryUploadFragment extends DialogFragment {
     MainActivity activity;
 
     @Override
@@ -86,6 +87,7 @@ public class StoryUploadFragment extends Fragment {
                         newItemMap.put("date", Utils.getDate());
 
                         firebase.child(storyTitleEditText.getText().toString()).setValue(newItemMap);
+                        getDialog().dismiss();
                         //activity.switchFragment(new TabMenu());
                     }
                 });
@@ -96,9 +98,13 @@ public class StoryUploadFragment extends Fragment {
         return rootView;
     }
 
+
+
     @Override
     public void onAttach(Activity activity) {
         this.activity = (MainActivity) activity;
         super.onAttach(activity);
     }
+
+
 }
