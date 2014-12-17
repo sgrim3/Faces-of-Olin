@@ -69,23 +69,6 @@ public class StoryList extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                //if story, switch to story, if image switch to image
-
-//                Dialog dialog = new Dialog(getActivity());
-//                dialog.setTitle("Dialog");
-//
-//                TextView storyTitle = (TextView) rootView.findViewById(R.id.title_story_view);
-//                final TextView storyText = (TextView) rootView.findViewById(R.id.story_text_view);
-//                final TextView storyLocation = (TextView) rootView.findViewById(R.id.story_view_location);
-//                // final Button backButton = (Button) rootView.findViewById(R.id.story_back_button);
-//
-//                //fill in textviews
-//                storyTitle.setText(allStories.get(position).get_title());
-//                storyText.setText(allStories.get(position).get_storytext());
-//                storyLocation.setText(allStories.get(position).get_location());
-//                dialog.setContentView(R.layout.fragment_story_view);
-//                dialog.show();
-                //activity.switchFragment(new StoryViewFragment(allStories.get(position)));
             }
         });
 

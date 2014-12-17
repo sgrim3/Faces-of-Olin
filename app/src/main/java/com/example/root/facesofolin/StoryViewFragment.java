@@ -47,9 +47,4 @@ public class StoryViewFragment extends Fragment {
         return rootView;
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        this.activity = (MainActivity) activity;
-        super.onAttach(activity);
-    }
 }

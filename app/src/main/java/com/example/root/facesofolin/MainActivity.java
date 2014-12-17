@@ -41,7 +41,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 /* Starts Firebase */
         Firebase.setAndroidContext(this);
 
-        // Create the adapter that will return a fragment for each of the three primary sections
+        // Create the adapter that will return a fragment for each of the two primary sections
         // of the app.
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
 
