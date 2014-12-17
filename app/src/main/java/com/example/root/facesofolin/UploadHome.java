@@ -38,7 +38,7 @@ public class UploadHome extends Fragment {
     private static final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 200;
     public static final int RESULT_LOAD_IMAGE = 1;
 
-    public String picturepath;
+    public String filepath = "words";
 
     MainActivity activity;
 
@@ -60,9 +60,6 @@ public class UploadHome extends Fragment {
         storyButton.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View view) {
-                        //switch to story fragment
-                        //activity.switchFragment(new StoryUploadFragment());
-
                         StoryUploadFragment myDiag=new StoryUploadFragment();
                         myDiag.show(getFragmentManager(),"Diag");
 
@@ -104,14 +101,18 @@ public class UploadHome extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == Activity.RESULT_OK && null != data) {
-            picturepath = MediaUtils.pickPicture(activity,data);
+            Log.v("picture1", filepath);
+            filepath = MediaUtils.pickPicture(activity,data);
+            activity.filepath = filepath;
 
-
-            //activity.switchFragment(new ImageUploadFragment());
-
-//            Figure out where to put the picture
-//            ImageView imageView = (ImageView) findViewById(R.id.imgView);
-//            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+//            App.requestQueue.add(new CloudinaryFinal(filepath, new StringCallback() {
+//                @Override
+//                public void gotURL(String url) {
+//                    Log.v("thing", "thing");
+//                }
+//            }));
+            ImageUploadFragment myDiag=new ImageUploadFragment();
+            myDiag.show(getFragmentManager(),"Diag");
 
         }
 

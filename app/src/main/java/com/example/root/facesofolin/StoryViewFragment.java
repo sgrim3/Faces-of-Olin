@@ -1,9 +1,11 @@
 package com.example.root.facesofolin;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +13,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class StoryViewFragment extends Fragment {
+public class StoryViewFragment extends DialogFragment {
     Story story;
     MainActivity activity;
 
     public StoryViewFragment(Story story) {
         this.story = story;
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setStyle(STYLE_NO_FRAME, android.R.style.Theme_Holo_Light);
+
     }
 
     @Override
@@ -39,6 +50,7 @@ public class StoryViewFragment extends Fragment {
         imageCaption.setText(story.get_image_caption());
 
         //Get image
+
         Bitmap bimage = Utils.getBitmapFromURL(story.get_image_url());
         imageView.setImageBitmap(bimage);
 

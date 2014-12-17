@@ -34,6 +34,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
      */
     ViewPager mViewPager;
 
+    String filepath = "";
+
     private ArrayList<android.app.Fragment> activeFragments = new ArrayList<android.app.Fragment>();
 
     public void onCreate(Bundle savedInstanceState) {

@@ -40,6 +40,7 @@ public class StoryList extends Fragment {
         firebase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     String title = child.getKey();
                     String story_text = child.child("story_text").getValue().toString();
@@ -68,6 +69,8 @@ public class StoryList extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+                StoryViewFragment myDiag=new StoryViewFragment(allStories.get(position));
+                myDiag.show(getFragmentManager(),"Diag");
 
             }
         });

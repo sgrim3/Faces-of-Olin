@@ -1,8 +1,5 @@
 package com.example.root.facesofolin;
 
-/**
- * Created by root on 12/14/14.
- */
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -17,13 +14,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * Created by sihrc on 12/14/14.
+ */
 public class CloudinaryFinal extends StringRequest {
     // Path to the picture
     String picturePath;
@@ -49,8 +49,6 @@ public class CloudinaryFinal extends StringRequest {
 
         this.picturePath = picturePath;
     }
-
-
 
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
@@ -81,5 +79,4 @@ public class CloudinaryFinal extends StringRequest {
         params.put("api_key", "382541929414289");
         return params;
     }
-
 }
