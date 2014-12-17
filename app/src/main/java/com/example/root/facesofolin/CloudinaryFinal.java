@@ -17,16 +17,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
-
-/**
- * Created by sihrc on 12/14/14.
- */
 public class CloudinaryFinal extends StringRequest {
     // Path to the picture
     String picturePath;
@@ -53,6 +50,8 @@ public class CloudinaryFinal extends StringRequest {
         this.picturePath = picturePath;
     }
 
+
+
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
         return new HashMap<String, String>() {{
@@ -72,43 +71,15 @@ public class CloudinaryFinal extends StringRequest {
         params.put("file", "data:image/jpeg;base64," + Base64.encodeToString(b, Base64.DEFAULT));
         String timestamp = String.valueOf(System.currentTimeMillis());
         params.put("timestamp", timestamp);
-        params.put("signature", SHA1("timestamp=" + timestamp + "xPE3O1CPu04ryh5uHj_TvI4xcc0"));
+        try {
+            params.put("signature", Utils.SHA1("timestamp=" + timestamp + "xPE3O1CPu04ryh5uHj_TvI4xcc0"));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         params.put("api_key", "382541929414289");
         return params;
     }
 
-
-    private static String convertToHex(byte[] data) {
-        StringBuilder buf = new StringBuilder();
-        for (byte b : data) {
-            int halfbyte = (b >>> 4) & 0x0F;
-            int two_halfs = 0;
-            do {
-                buf.append((0 <= halfbyte) && (halfbyte <= 9) ? (char) ('0' + halfbyte) : (char) ('a' + (halfbyte - 10)));
-                halfbyte = b & 0x0F;
-            } while (two_halfs++ < 1);
-        }
-        return buf.toString();
-    }
-
-    public static String SHA1(String text) {
-        MessageDigest md = null;
-        try {
-            md = MessageDigest.getInstance("SHA-1");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        try {
-            assert md != null;
-            md.update(text.getBytes("iso-8859-1"), 0, text.length());
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        byte[] sha1hash = md.digest();
-        return convertToHex(sha1hash);
-    }
-
-    public interface StringCallback {
-        public void gotURL(String url);
-    }
 }

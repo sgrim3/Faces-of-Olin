@@ -25,8 +25,10 @@ public class StoryUploadFragment extends Fragment {
         final EditText storyTitleEditText = (EditText) rootView.findViewById(R.id.title_story);
         final Button uploadStoryButton = (Button) rootView.findViewById(R.id.upload_story);
         final EditText storyTextEditText = (EditText) rootView.findViewById(R.id.story_text);
-        final EditText storyTagEditText = (EditText) rootView.findViewById(R.id.enter_tag_story);
         final EditText storyLocationEditText = (EditText) rootView.findViewById(R.id.story_upload_location);
+
+//        final EditText storyTagEditText = (EditText) rootView.findViewById(R.id.enter_tag_story);
+
 //        final EditText storyBuildingEditText = (EditText) rootView.findViewById(R.id.enter_building_story);
 //        final EditText storyFloorEditText = (EditText) rootView.findViewById(R.id.enter_floor_story);
 //        final EditText storyRoomEditText = (EditText) rootView.findViewById(R.id.enter_room_story);
@@ -34,7 +36,7 @@ public class StoryUploadFragment extends Fragment {
 //        final Button buildingButton = (Button) rootView.findViewById(R.id.building_button);
 //        final Button floorButton = (Button) rootView.findViewById(R.id.floor_button);
 //        final Button roomButton = (Button) rootView.findViewById(R.id.room_button);
-        final Firebase firebase = new Firebase("https://olinadmissionsapp.firebaseio.com/stories");
+
 
 //        //Building button click
 //        buildingButton.setOnClickListener(
@@ -67,6 +69,8 @@ public class StoryUploadFragment extends Fragment {
 //                    }
 //                });
 
+        final Firebase firebase = new Firebase("https://olinadmissionsapp.firebaseio.com/stories");
+
         //Upload button click
         uploadStoryButton.setOnClickListener(
                 new View.OnClickListener(){
@@ -75,13 +79,10 @@ public class StoryUploadFragment extends Fragment {
                         Map<String, Map<String, String>> newTitle = new HashMap<String, Map<String, String>>();
 
                         newItemMap.put("story_text", storyTextEditText.getText().toString());
-                        newItemMap.put("tags", storyTagEditText.getText().toString());
+                        newItemMap.put("image_url", "");
+                        newItemMap.put("image_caption", "");
+//                        newItemMap.put("tags", storyTagEditText.getText().toString());
                         newItemMap.put("location", storyLocationEditText.getText().toString());
-                        newItemMap.put("image_public_url", "N/A");
-                        newItemMap.put("image_secure_url", "N/A");
-                        newItemMap.put("image_public_id", "N/A");
-                        newItemMap.put("image_signature", "N/A");
-                        newItemMap.put("image_caption", "N/A");
                         newItemMap.put("date", Utils.getDate());
 
                         firebase.child(storyTitleEditText.getText().toString()).setValue(newItemMap);

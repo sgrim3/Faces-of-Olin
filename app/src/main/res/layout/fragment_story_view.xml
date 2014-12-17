@@ -27,6 +27,19 @@
         android:layout_height="300dp"
         android:layout_below="@id/title_story_view" />
 
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="fill_parent"
+        android:layout_height="225dp"
+        android:layout_below="@+id/title_story_view"
+        />
+
+    <TextView
+        android:id="@+id/caption_view"
+        android:layout_width="fill_parent"
+        android:layout_height="75dp"
+        android:layout_below="@+id/image_view"/>
+
     <TextView
         android:id="@+id/story_view_location"
         android:textColor="#ffffff"

@@ -33,7 +33,7 @@ public class ImageUploadFragment extends Fragment {
         final EditText imageTitleEditText = (EditText) rootView.findViewById(R.id.title_image);
         final Button uploadImageButton = (Button) rootView.findViewById(R.id.upload_image);
         final EditText imageCaptionEditText = (EditText) rootView.findViewById(R.id.caption_text);
-        final EditText imageTagEditText = (EditText) rootView.findViewById(R.id.enter_tag_story);
+//        final EditText imageTagEditText = (EditText) rootView.findViewById(R.id.enter_tag_story);
         final EditText imageLocationEditText = (EditText) rootView.findViewById(R.id.story_upload_location);
         final Firebase firebase = new Firebase("https://olinadmissionsapp.firebaseio.com/");
         final UploadHome uploadHome = new UploadHome();
@@ -55,15 +55,16 @@ public class ImageUploadFragment extends Fragment {
         uploadImageButton.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick (View view) {
-                        App.requestQueue.add(new CloudinaryFinal(uploadHome.picturepath, new CloudinaryFinal.StringCallback() {
+                        App.requestQueue.add(new CloudinaryFinal(uploadHome.picturepath, new StringCallback() {
                             @Override
                             public void gotURL(String url) {
-                                //TODO - Save to firebase
                                 Map<String, String> newItemMap = new HashMap<String, String>();
                                 Map<String, Map<String, String>> newTitle = new HashMap<String, Map<String, String>>();
 
-                                newItemMap.put("story_text", "n/a");
-                                newItemMap.put("tags", imageTagEditText.getText().toString());
+                                newItemMap.put("story_text", "");
+                                newItemMap.put ("image_url", url);
+                                newItemMap.put ("image_caption", imageCaptionEditText.getText().toString());
+//                                newItemMap.put("tags", imageTagEditText.getText().toString());
                                 newItemMap.put("location", imageLocationEditText.getText().toString());
                                 newItemMap.put("date", Utils.getDate());
 
