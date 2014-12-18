@@ -1,23 +1,16 @@
 package com.example.root.facesofolin;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.app.Fragment;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
 
 public class StoryViewFragment extends DialogFragment {
     Story story;
-    MainActivity activity;
 
     public StoryViewFragment(Story story) {
         this.story = story;
@@ -43,9 +36,6 @@ public class StoryViewFragment extends DialogFragment {
         final TextView storyLocation = (TextView) rootView.findViewById(R.id.story_view_location);
         final TextView imageCaption = (TextView) rootView.findViewById(R.id.caption_view);
         final TextView author = (TextView) rootView.findViewById(R.id.author_view);
-//        final ImageView imageView = (ImageView) rootView.findViewById(R.id.image_view);
-
-
 
         //fill in views
         storyTitle.setText(story.get_storytitle());

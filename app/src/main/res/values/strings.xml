@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Olin Admissions</string>
+    <string name="app_name">Faces of Olin</string>
     <string name="action_settings">Log Out</string>
     <string name="take_pic">Take picture</string>
     <string name="choose_pic">Upload picture</string>

@@ -4,9 +4,8 @@ package com.example.root.facesofolin;
  * Created by root on 11/10/14.
  */
 
-
-
 public class Story {
+    // Encodes all the information for a typical story
     private String time;
     private String location;
     private String story_text;
@@ -15,7 +14,7 @@ public class Story {
     private String image_caption;
     private String author;
 
-    public Story(String time, String location, String story_text, String stpry_title, String image_url, String image_caption, String author) {
+    public Story(String time, String location, String story_text, String story_title, String image_url, String image_caption, String author) {
         this.time = time;
         this.location = location;
         this.story_text = story_text;

@@ -3,41 +3,19 @@ package com.example.root.facesofolin;
 
 //import packages
 import android.app.Activity;
-import android.support.v4.app.Fragment;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-import java.util.AbstractCollection;
-import java.util.HashMap;
-import java.util.Map;
 
 public class UploadHome extends Fragment {
 
     //initialize variables
-
-    private Uri fileUri;   //filepath for pictures
-
-//    public static final int MEDIA_TYPE_IMAGE = 1;
-//    public static final int MEDIA_TYPE_VIDEO = 2;
-//
-//    private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
-//    private static final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 200;
     public static final int RESULT_LOAD_IMAGE = 1;
-
     public String filepath = "words";
 
     MainActivity activity;
@@ -65,24 +43,6 @@ public class UploadHome extends Fragment {
 
                     }
                 });
-
-        //when the take picture button is pressed
-//        takePicButton.setOnClickListener(
-//                new View.OnClickListener() {
-//                    public void onClick(View view) {
-//                        //switch to camera
-//                        // create Intent to take a picture and return control to the calling application
-//                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-////                        File file = new File (Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".png");
-//
-////                        fileUri = Uri.fromFile(file);
-//                        fileUri = MediaUtils.getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
-//                        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri.toString()); // set the image file name
-//                        Log.v("takePicButton", fileUri.toString());
-//                        startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
-//
-//                    }
-//                });
 
         //when the choose picture button is pressed
         uploadPicButton.setOnClickListener(
@@ -112,42 +72,6 @@ public class UploadHome extends Fragment {
             myDiag.show(getFragmentManager(),"Diag");
 
         }
-//
-//        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
-//            if (resultCode == Activity.RESULT_OK) {
-//                // Image captured and saved to fileUri specified in the Intent
-//                Toast.makeText(activity, "Image saved to:\n" +
-//                        fileUri, Toast.LENGTH_LONG).show();
-//                activity.filepath = fileUri.toString();
-//
-//                Log.v("picture", activity.filepath);
-//
-//                ImageUploadFragment myDiag=new ImageUploadFragment();
-//                myDiag.show(getFragmentManager(),"Diag");
-//
-//
-//            } else if (resultCode == Activity.RESULT_CANCELED) {
-//                // User cancelled the image capture
-//            } else {
-//                // Image capture failed, advise user
-//            }
-//        }
-
-//        if (requestCode == CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE) {
-//            if (resultCode == Activity.RESULT_OK) {
-//                // Video captured and saved to fileUri specified in the Intent
-//                Toast.makeText(activity, "Video saved to:\n" +
-//                        data.getData(), Toast.LENGTH_LONG).show();
-//            } else if (resultCode == Activity.RESULT_CANCELED) {
-//                // User cancelled the video capture
-//                Toast.makeText(activity, "Capture Cancelled", Toast.LENGTH_LONG)
-//                        .show();
-//            } else {
-//                // Video capture failed, advise user
-//                Toast.makeText(activity, "Capture failed", Toast.LENGTH_LONG)
-//                        .show();
-//            }
-//        }
     }
 
     @Override

@@ -160,7 +160,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) { // Creates the settings menu in actionbar
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.my, menu);
 
@@ -168,10 +168,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) { // Decides what to do when setting is selected
         switch (item.getItemId()) {
             case R.id.action_settings:
-                LoginActivity.logOut(this);
+                LoginActivity.logOut(this); // Log out option
                 this.finish();
                 return true;
             default:

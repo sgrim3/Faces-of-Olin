@@ -25,7 +25,6 @@ public class LoginFragment extends Fragment {
     private boolean loggedIn = false;
     private String username;
 
-
     private Session.StatusCallback callback = new Session.StatusCallback(){
         @Override
         public void call(Session session, SessionState state, Exception exception) {
@@ -53,7 +52,6 @@ public class LoginFragment extends Fragment {
 
         LoginButton loginButton = (LoginButton) rootView.findViewById(R.id.loginButton);
         loginButton.setFragment(this);
-//        loginButton.setReadPermissions(Arrays.asList("user_likes", "user_statuses"));
 
         return rootView;
     }
@@ -100,12 +98,15 @@ public class LoginFragment extends Fragment {
             Request.newMeRequest(session, new Request.GraphUserCallback() {
                 @Override
                 public void onCompleted(GraphUser user, Response response) {
+                    // If the user was not initially logged in...
                     if(!loggedIn && user != null) {
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         username = user.getName();
-                        intent.putExtra("username", username);
+                        intent.putExtra("username", username); // Transfers username information to new activity
+
                         startActivity(intent);
                     }
+
                     loggedIn = true;
                 }
             }).executeAsync();

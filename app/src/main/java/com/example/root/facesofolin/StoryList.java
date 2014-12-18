@@ -1,15 +1,13 @@
 package com.example.root.facesofolin;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.support.v4.app.Fragment;
-import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -36,7 +34,6 @@ public class StoryList extends Fragment {
 
         final CustomList adapter = new CustomList(this.getActivity(), allStories, allTitles);
 
-//        final Firebase firebase = new Firebase("https://olinadmissionsapp.firebaseio.com/stories");
         final Firebase firebase = new Firebase("https://boiling-inferno-4244.firebaseio.com/");
 
         firebase.addValueEventListener(new ValueEventListener() {

@@ -61,34 +61,6 @@
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-    <!--<TextView-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:id="@+id/alignStuff"-->
-        <!--android:layout_alignParentBottom="true"-->
-<!--/>-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/enter_tags"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/tag"-->
-        <!--android:textColor="#ffffff"-->
-        <!--android:layout_below="@+id/story_text"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_marginTop="40dp" />-->
-
-    <!--<EditText-->
-        <!--android:id="@+id/enter_tag_story"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:gravity="start"-->
-        <!--android:inputType="text"-->
-        <!--android:background="#FFFFFF"-->
-        <!--android:layout_below="@+id/enter_tags"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentEnd="true" />-->
 
     <TextView
         android:id="@+id/enter_location"
@@ -110,64 +82,5 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:inputType="text" />
-
-    <!--<EditText-->
-    <!--android:id="@+id/enter_building_story"-->
-    <!--android:layout_width="165dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@string/building_prompt"-->
-    <!--android:gravity="start"-->
-    <!--android:inputType="text"-->
-    <!--android:layout_below="@+id/enter_tag_story" />-->
-
-    <!--<EditText-->
-    <!--android:id="@+id/enter_floor_story"-->
-    <!--android:layout_width="78dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@string/floor_prompt"-->
-    <!--android:gravity="start"-->
-    <!--android:inputType="text"-->
-    <!--android:layout_below="@+id/enter_tag_story"-->
-    <!--android:layout_toRightOf="@+id/enter_building_story" />-->
-
-    <!--<EditText-->
-    <!--android:id="@+id/enter_room_story"-->
-    <!--android:layout_width="120dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@string/room_prompt"-->
-    <!--android:gravity="start"-->
-    <!--android:inputType="text"-->
-    <!--android:layout_below="@+id/enter_tag_story"-->
-    <!--android:layout_toRightOf="@+id/enter_floor_story" />-->
-
-
-    <!--<Spinner-->
-    <!--android:id="@+id/building_spinner"-->
-    <!--android:layout_width="125dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_below="@+id/enter_tag_story"-->
-    <!--android:entries="@array/buildings_array"-->
-    <!--android:prompt="@string/building_prompt"-->
-    <!--/>-->
-
-    <!--<Spinner-->
-    <!--android:id="@+id/cc_mh_floor_spinner"-->
-    <!--android:layout_width="125dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_toRightOf="@+id/building_spinner"-->
-    <!--android:layout_below="@+id/enter_tag_story"-->
-    <!--android:entries="@array/cc_mh_floor_array"-->
-    <!--android:prompt="@string/floor_prompt"-->
-    <!--/>-->
-
-    <!--<Spinner-->
-    <!--android:id="@+id/cc_rooms_spinner"-->
-    <!--android:layout_width="125dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_toRightOf="@+id/cc_mh_floor_spinner"-->
-    <!--android:layout_below="@+id/enter_tag_story"-->
-    <!--android:entries="@array/cc_mh_floor_array"-->
-    <!--android:prompt="@string/room_prompt"-->
-    <!--/>-->
 
 </RelativeLayout>

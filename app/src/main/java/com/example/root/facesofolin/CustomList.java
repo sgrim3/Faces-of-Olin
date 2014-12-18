@@ -27,10 +27,8 @@ public class CustomList extends ArrayAdapter<String> {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView= inflater.inflate(R.layout.story_list_single, null, true);
         TextView txtTitle = (TextView) rowView.findViewById(R.id.txt);
-        //ImageView imageView = (ImageView) rowView.findViewById(R.id.img);
         TextView txtLocation = (TextView) rowView.findViewById(R.id.loc);
         txtTitle.setText(allTitles.get(position));
-//        imageView.setImageResource(imageId.get(position));
         txtLocation.setText(allStories.get(position).get_location());
 
         return rowView;

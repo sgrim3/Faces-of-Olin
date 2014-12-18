@@ -64,28 +64,6 @@
         android:layout_alignParentStart="true"
         android:background="#FFFFFF"/>
 
-    <!--<TextView-->
-        <!--android:id="@+id/enter_tags1"-->
-        <!--android:layout_width="500dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/tag"-->
-        <!--android:textColor="#FFFFFF"-->
-        <!--android:layout_below="@+id/caption_text"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_marginTop="39dp" />-->
-
-    <!--<EditText-->
-        <!--android:id="@+id/enter_tag_story"-->
-        <!--android:layout_width="500dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:gravity="start"-->
-        <!--android:inputType="text"-->
-        <!--android:background="#FFFFFF"-->
-        <!--android:layout_below="@+id/enter_tags1"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentEnd="true" />-->
-
     <TextView
         android:id="@+id/enter_location1"
         android:layout_width="500dp"
@@ -106,93 +84,5 @@
         android:layout_below="@+id/enter_location1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-    <!--<EditText-->
-    <!--android:id="@+id/enter_building_picture"-->
-    <!--android:layout_width="165dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@string/building_prompt"-->
-    <!--android:gravity="start"-->
-    <!--android:inputType="text"-->
-    <!--android:layout_below="@+id/enter_tag_picture" />-->
-
-    <!--<EditText-->
-    <!--android:id="@+id/enter_floor_picture"-->
-    <!--android:layout_width="78dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@string/floor_prompt"-->
-    <!--android:gravity="start"-->
-    <!--android:inputType="text"-->
-    <!--android:layout_below="@+id/enter_tag_picture"-->
-    <!--android:layout_toRightOf="@+id/enter_building_picture" />-->
-
-    <!--<EditText-->
-    <!--android:id="@+id/enter_room_picture"-->
-    <!--android:layout_width="120dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@string/room_prompt"-->
-    <!--android:gravity="start"-->
-    <!--android:inputType="text"-->
-    <!--android:layout_below="@+id/enter_tag_picture"-->
-    <!--android:layout_toRightOf="@+id/enter_floor_picture" />-->
-
-
-    <!--<Spinner-->
-    <!--android:id="@+id/building_spinner"-->
-    <!--android:layout_width="125dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_below="@+id/enter_tag_picture"-->
-    <!--android:entries="@array/buildings_array"-->
-    <!--android:prompt="@string/building_prompt"-->
-    <!--/>-->
-
-    <!--<Button-->
-    <!--android:id="@+id/building_button"-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="fill_parent"-->
-    <!--android:layout_alignBottom="@+id/building_spinner"-->
-    <!--android:layout_alignTop="@+id/building_spinner"-->
-    <!--android:layout_alignRight="@+id/building_spinner"-->
-    <!--android:layout_alignLeft="@+id/building_spinner"-->
-    <!--/>-->
-
-    <!--<Spinner-->
-    <!--android:id="@+id/floor_spinner"-->
-    <!--android:layout_width="125dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_toRightOf="@+id/building_spinner"-->
-    <!--android:layout_below="@+id/enter_tag_picture"-->
-    <!--android:prompt="@string/floor_prompt"-->
-    <!--/>-->
-
-    <!--<Button-->
-    <!--android:id="@+id/floor_button"-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="fill_parent"-->
-    <!--android:layout_alignBottom="@+id/floor_spinner"-->
-    <!--android:layout_alignTop="@+id/floor_spinner"-->
-    <!--android:layout_alignRight="@+id/floor_spinner"-->
-    <!--android:layout_alignLeft="@+id/floor_spinner"-->
-    <!--/>-->
-
-    <!--<Spinner-->
-    <!--android:id="@+id/room_spinner"-->
-    <!--android:layout_width="125dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_toRightOf="@+id/floor_spinner"-->
-    <!--android:layout_below="@+id/enter_tag_picture"-->
-    <!--android:prompt="@string/room_prompt"-->
-    <!--/>-->
-
-    <!--<Button-->
-    <!--android:id="@+id/room_button"-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="fill_parent"-->
-    <!--android:layout_alignBottom="@+id/room_spinner"-->
-    <!--android:layout_alignTop="@+id/room_spinner"-->
-    <!--android:layout_alignRight="@+id/room_spinner"-->
-    <!--android:layout_alignLeft="@+id/room_spinner"-->
-    <!--/>-->
-
 
 </RelativeLayout>

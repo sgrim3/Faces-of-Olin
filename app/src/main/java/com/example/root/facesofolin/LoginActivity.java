@@ -1,11 +1,8 @@
 package com.example.root.facesofolin;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.util.Log;
 
 import com.facebook.Session;
 
@@ -17,6 +14,7 @@ public class LoginActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState == null) {
+            // Brings up the Facebook login button
             loginFragment = new LoginFragment();
             getSupportFragmentManager()
                     .beginTransaction()
@@ -28,6 +26,7 @@ public class LoginActivity extends FragmentActivity {
         }
     }
 
+    // Returns to the main screen when the user opts to log out
     public static void logOut(Context context) {
         Session session = Session.getActiveSession();
 

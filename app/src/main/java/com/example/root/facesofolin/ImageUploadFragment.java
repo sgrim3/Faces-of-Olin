@@ -41,9 +41,7 @@ public class ImageUploadFragment extends DialogFragment {
         final EditText imageTitleEditText = (EditText) rootView.findViewById(R.id.title_image);
         final Button uploadImageButton = (Button) rootView.findViewById(R.id.upload_image);
         final EditText imageCaptionEditText = (EditText) rootView.findViewById(R.id.caption_text);
-//        final EditText imageTagEditText = (EditText) rootView.findViewById(R.id.enter_tag_story);
         final EditText imageLocationEditText = (EditText) rootView.findViewById(R.id.story_upload_location);
-//        final Firebase firebase = new Firebase("https://olinadmissionsapp.firebaseio.com/");
         final Firebase firebase = new Firebase("https://boiling-inferno-4244.firebaseio.com/");
 
 
@@ -75,10 +73,8 @@ public class ImageUploadFragment extends DialogFragment {
                                 newItemMap.put("story_title", imageTitleEditText.getText().toString());
                                 newItemMap.put ("image_url", url);
                                 newItemMap.put ("image_caption", imageCaptionEditText.getText().toString());
-//                                newItemMap.put("tags", imageTagEditText.getText().toString());
                                 newItemMap.put("location", imageLocationEditText.getText().toString());
                                 newItemMap.put("author", ((MainActivity)getActivity()).getUsername());
-                                //newItemMap.put("date", Utils.getDate());
 
                                 String date = Long.toString(System.currentTimeMillis());
                                 Log.v ("date", Utils.getTimestamp());
