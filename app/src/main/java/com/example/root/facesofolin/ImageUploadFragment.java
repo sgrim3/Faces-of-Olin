@@ -48,6 +48,7 @@ public class ImageUploadFragment extends DialogFragment {
 
 //      code from "http://stackoverflow.com/questions/4181774/show-image-view-from-file-path-in-android"
         File imgFile = new File(activity.filepath);
+        Log.v("ImageUploadFile",activity.filepath);
 
         if(imgFile.exists()){
 
@@ -57,7 +58,7 @@ public class ImageUploadFragment extends DialogFragment {
 
             myImage.setImageBitmap(myBitmap);
         }
-        else {Log.v ("thing","broke");}
+        else {Log.v ("ImageUploadFragment","file does not exist");}
 
 
         uploadImageButton.setOnClickListener(

@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -17,13 +18,10 @@ import java.util.Date;
 public class MediaUtils {
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
-    /** Create a file Uri for saving an image or video */
-    public static Uri getOutputMediaFileUri(int type){
-        return Uri.fromFile(getOutputMediaFile(type));
-    }
+
 
     /** Create a File for saving an image or video */
-    private static File getOutputMediaFile(int type){
+    public static Uri getOutputMediaFileUri(int type){
         // To be safe, you should check that the SDCard is mounted
         // using Environment.getExternalStorageState() before doing this.
 
@@ -44,16 +42,22 @@ public class MediaUtils {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File mediaFile;
         if (type == MEDIA_TYPE_IMAGE){
-            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                    "IMG_"+ timeStamp + ".jpg");
+            mediaFile = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".png");
+            try {
+                mediaFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (mediaFile.exists()) {Log.v("file exists", mediaFile.getAbsolutePath());}
+            else {Log.v("file does not exist",":(");}
         } else if(type == MEDIA_TYPE_VIDEO) {
             mediaFile = new File(mediaStorageDir.getPath() + File.separator +
                     "VID_"+ timeStamp + ".mp4");
         } else {
             return null;
         }
-
-        return mediaFile;
+        Uri uri = Uri.fromFile(mediaFile);
+            return uri;
     }
 
     public static String pickPicture(MainActivity activity, Intent data) {

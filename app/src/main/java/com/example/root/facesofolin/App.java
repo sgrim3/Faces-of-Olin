@@ -13,6 +13,8 @@ import com.android.volley.toolbox.Volley;
  */
 public class App extends Application {
     public static RequestQueue requestQueue;
+
+    //imageview from https://androidresearch.wordpress.com/2014/02/01/android-volley-tutorial/
     public static ImageLoader mImageLoader;
     @Override
     public void onCreate() {
