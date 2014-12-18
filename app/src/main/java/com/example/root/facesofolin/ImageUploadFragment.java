@@ -71,23 +71,20 @@ public class ImageUploadFragment extends DialogFragment {
                                 Map<String, String> newItemMap = new HashMap<String, String>();
                                 Map<String, Map<String, String>> newTitle = new HashMap<String, Map<String, String>>();
                                 newItemMap.put("story_text", "");
+                                newItemMap.put("story_title", imageTitleEditText.getText().toString());
                                 newItemMap.put ("image_url", url);
                                 newItemMap.put ("image_caption", imageCaptionEditText.getText().toString());
 //                                newItemMap.put("tags", imageTagEditText.getText().toString());
                                 newItemMap.put("location", imageLocationEditText.getText().toString());
-                                newItemMap.put("date", Utils.getDate());
+                                //newItemMap.put("date", Utils.getDate());
 
-                                firebase.child(imageTitleEditText.getText().toString()).setValue(newItemMap);
+                                String date = Long.toString(System.currentTimeMillis());
+                                Log.v ("date", Utils.getTimestamp());
+                                firebase.child (date).setValue(newItemMap);
+                                getDialog().dismiss();
 
-                                String title = imageTitleEditText.getText().toString();
-                                if (title.matches("")) {
-                                    Toast.makeText(activity, "Please enter a title", Toast.LENGTH_LONG).show();
-                                }
-                                else {
-                                    firebase.child (title).setValue(newItemMap);
-                                    getDialog().dismiss();
-                                }
                             }
+
                         }));
 
                     }

@@ -20,7 +20,8 @@
         android:gravity="start"
         android:inputType="text"
         android:textColorHint="#c8ffffff"
-        android:hint="Title of Post" />
+        android:hint="Title of Post"
+        android:textColor="#ffffffff" />
 
     <Button
         android:id="@+id/upload_image"

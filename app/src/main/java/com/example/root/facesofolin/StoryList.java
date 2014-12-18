@@ -19,10 +19,11 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 
 public class StoryList extends Fragment {
-    MainActivity activity;
-    ArrayList<Story> allStories = new ArrayList<Story>();
-    ArrayList<String> allTitles = new ArrayList<String>();
-    ListView list;
+    private MainActivity activity;
+    private ArrayList<Story> allStories = new ArrayList<Story>();
+    private ArrayList<String> allTitles = new ArrayList<String>();
+    private int dataSize = 0;
+    private ListView list;
 
     public StoryList() {
     }
@@ -41,21 +42,28 @@ public class StoryList extends Fragment {
         firebase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                int counter = 0;
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    String title = child.getKey();
+                    String time = child.getKey();
                     String story_text = child.child("story_text").getValue().toString();
-                    String date = child.child("date").getValue().toString();
+                    String story_title = child.child("story_title").getValue().toString();
                     String location = child.child("location").getValue().toString();
                     String image = child.child("image_url").getValue().toString();
                     String image_caption = child.child("image_caption").getValue().toString();
 
-                    Story storyItem = new Story(title, location, story_text, date, image, image_caption);
+                    Story storyItem = new Story(time, location, story_text, story_title, image, image_caption);
 
-                    allStories.add(storyItem);
-                    allTitles.add(title);
-                    adapter.notifyDataSetChanged();
+                    counter++;
+
+                    if (counter > dataSize) {
+                        allStories.add(storyItem);
+                        allTitles.add(story_title);
+                        adapter.notifyDataSetChanged();
+                    }
                 }
+
+                dataSize = counter;
             }
 
             @Override

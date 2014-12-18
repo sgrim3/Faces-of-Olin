@@ -21,6 +21,8 @@ import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -35,6 +37,7 @@ public class Utils {
         String ts =  tsTemp.toString();
         return ts;
     }
+
 
     private static String convertToHex(byte[] data) {
         StringBuilder buf = new StringBuilder();

@@ -7,24 +7,24 @@ package com.example.root.facesofolin;
 
 
 public class Story {
-    private String title;
+    private String time;
     private String location;
     private String story_text;
-    private String date;
+    private String story_title;
     private String image_url;
     private String image_caption;
 
-    public Story(String title, String location, String story_text, String date, String image_url, String image_caption) {
-        this.title = title;
+    public Story(String time, String location, String story_text, String stpry_title, String image_url, String image_caption) {
+        this.time = time;
         this.location = location;
         this.story_text = story_text;
-        this.date = date;
+        this.story_title = story_title;
         this.image_url = image_url;
         this.image_caption = image_caption;
     }
 
-    public String get_title() {
-        return title;
+    public String get_time() {
+        return time;
     }
 
     public String get_location() {
@@ -35,12 +35,11 @@ public class Story {
         return story_text;
     }
 
-    public String get_date() {
-        return date;
+    public String get_storytitle() {
+        return story_title;
     }
 
     public String get_image_url() { return image_url; }
-
 
     public String get_image_caption() { return image_caption; }
 }

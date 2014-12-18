@@ -97,22 +97,19 @@ public class StoryUploadFragment extends DialogFragment {
                     Map<String, Map<String, String>> newTitle = new HashMap<String, Map<String, String>>();
 
                         newItemMap.put("story_text", storyTextEditText.getText().toString());
+                        newItemMap.put ("story_title", storyTitleEditText.getText().toString());
                         newItemMap.put("image_url", "");
                         newItemMap.put("image_caption", "");
 //                        newItemMap.put("tags", storyTagEditText.getText().toString());
                         newItemMap.put("location", storyLocationEditText.getText().toString());
-                        newItemMap.put("date", Utils.getDate());
+//                        newItemMap.put("date", Utils.getDate());
 
-                        String title = storyTitleEditText.getText().toString();
-                        if (title.matches("")) {
-                            Toast.makeText(activity, "Please enter a title", Toast.LENGTH_LONG).show();
-                        }
-                        else {
-                            firebase.child (title).setValue(newItemMap);
-                            Log.v ("title","should be there");
-                            getDialog().dismiss();
-                        }
+                        String date = Long.toString(System.currentTimeMillis());
+
+                        firebase.child (date).setValue(newItemMap);
+                        getDialog().dismiss();
                     }
+
                 });
 
 

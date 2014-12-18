@@ -42,12 +42,13 @@ public class StoryViewFragment extends DialogFragment {
         final TextView storyText = (TextView) rootView.findViewById(R.id.story_text_view);
         final TextView storyLocation = (TextView) rootView.findViewById(R.id.story_view_location);
         final TextView imageCaption = (TextView) rootView.findViewById(R.id.caption_view);
+        final TextView author = (TextView) rootView.findViewById(R.id.author_view);
 //        final ImageView imageView = (ImageView) rootView.findViewById(R.id.image_view);
 
 
 
         //fill in views
-        storyTitle.setText(story.get_title());
+        storyTitle.setText(story.get_storytitle());
         storyText.setText(story.get_storytext());
         storyLocation.setText(story.get_location());
         imageCaption.setText(story.get_image_caption());

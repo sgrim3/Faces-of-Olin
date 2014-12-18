@@ -1,6 +1,4 @@
-
-
-
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_relative_layout"
@@ -20,6 +18,8 @@
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
+        android:textAlignment="center"
+        android:gravity="center"
         android:textColor="#ffffff"
         android:textSize="20sp" />
 
@@ -27,34 +27,40 @@
         android:id="@+id/story_text_view"
         android:textColor="#ffffff"
         android:layout_width="fill_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
         android:layout_below="@id/title_story_view" />
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/image_view"
         android:layout_width="fill_parent"
-        android:layout_height="225dp"
-        android:layout_below="@+id/title_story_view"
-        />
+        android:layout_height="250dp"
+        android:layout_below="@+id/title_story_view" />
 
     <TextView
         android:id="@+id/caption_view"
         android:layout_width="fill_parent"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="15dp"
+        android:textColor="#c8ffffff"
+        android:textAlignment="center"
+        android:gravity="center"
         android:layout_below="@+id/image_view"/>
 
     <TextView
         android:id="@+id/story_view_location"
-        android:textColor="#ffffff"
+        android:textColor="#c8ffffff"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/story_text_view" />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/author_view" />
 
     <TextView
-        android:id="@+id/story_view_tags"
-        android:textColor="#ffffff"
+        android:id="@+id/author_view"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/story_view_location" />
+        android:layout_height="wrap_content"
+        android:textColor="#c8ffffff"
+        android:paddingBottom="100dp"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

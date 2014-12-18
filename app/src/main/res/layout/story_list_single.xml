@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e3000000">
+    android:background="#e3111111">
 
     <ImageView
         android:id="@+id/img"
@@ -19,6 +19,8 @@
         android:textColor="#ffffff"
         android:paddingLeft="20dp"
         android:paddingStart="20dp"
+        android:paddingRight="20dp"
+        android:paddingEnd="20dp"
         android:layout_toRightOf="@+id/img"/>
 
     <TextView
@@ -30,6 +32,8 @@
         android:layout_below="@+id/txt"
         android:paddingLeft="20dp"
         android:paddingStart="20dp"
+        android:paddingRight="20dp"
+        android:paddingEnd="20dp"
         android:layout_toRightOf="@+id/img" />
 
 </RelativeLayout>
