@@ -59,12 +59,12 @@ public class Utils {
         return convertToHex(sha1hash);
     }
 
-    public static String getDate() {
-        Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
-        String formattedDate = sdf.format(date);
-        return formattedDate;
-    }
+//    public static String getDate() {
+//        Date date = new Date();
+//        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
+//        String formattedDate = sdf.format(date);
+//        return formattedDate;
+//    }
 
     private static byte[] getBytesFromImagePath(String imagePath) {
         if (imagePath == null) {
@@ -98,28 +98,28 @@ public class Utils {
         return null;
     }
 
-    public static String encodeTobase64(String image)
-    {
-        return Base64.encodeToString(getBytesFromImagePath(image), Base64.DEFAULT);
-    }
-
-    public static Bitmap getBitmapFromURL(String src) {
-        try {
-            Log.e("src", src);
-            URL url = new URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            Log.e("Bitmap", "returned");
-            return myBitmap;
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.e("Exception", e.getMessage());
-            return null;
-        }
-    }
+//    public static String encodeTobase64(String image)
+//    {
+//        return Base64.encodeToString(getBytesFromImagePath(image), Base64.DEFAULT);
+//    }
+//
+//    public static Bitmap getBitmapFromURL(String src) {
+//        try {
+//            Log.e("src", src);
+//            URL url = new URL(src);
+//            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//            connection.setDoInput(true);
+//            connection.connect();
+//            InputStream input = connection.getInputStream();
+//            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+//            Log.e("Bitmap", "returned");
+//            return myBitmap;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            Log.e("Exception", e.getMessage());
+//            return null;
+//        }
+//    }
 
 //from https://androidresearch.wordpress.com/2014/02/01/android-volley-tutorial/
 
@@ -159,11 +159,11 @@ public class Utils {
         }
     }
 
-    public void imageView (){
-        ImageLoader.ImageCache imageCache = new BitmapLruCache();
-        ImageLoader mImageLoader = new ImageLoader(App.requestQueue, imageCache);
-
-    }
+//    public void imageView (){
+//        ImageLoader.ImageCache imageCache = new BitmapLruCache();
+//        ImageLoader mImageLoader = new ImageLoader(App.requestQueue, imageCache);
+//
+//    }
 
 
 }

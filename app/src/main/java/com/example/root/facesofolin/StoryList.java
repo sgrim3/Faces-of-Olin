@@ -51,8 +51,9 @@ public class StoryList extends Fragment {
                     String location = child.child("location").getValue().toString();
                     String image = child.child("image_url").getValue().toString();
                     String image_caption = child.child("image_caption").getValue().toString();
+                    String author = child.child("author").getValue().toString();
 
-                    Story storyItem = new Story(time, location, story_text, story_title, image, image_caption);
+                    Story storyItem = new Story(time, location, story_text, story_title, image, image_caption, author);
 
                     counter++;
 

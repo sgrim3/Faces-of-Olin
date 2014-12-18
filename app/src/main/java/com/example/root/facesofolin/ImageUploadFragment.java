@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,6 +77,7 @@ public class ImageUploadFragment extends DialogFragment {
                                 newItemMap.put ("image_caption", imageCaptionEditText.getText().toString());
 //                                newItemMap.put("tags", imageTagEditText.getText().toString());
                                 newItemMap.put("location", imageLocationEditText.getText().toString());
+                                newItemMap.put("author", ((MainActivity)getActivity()).getUsername());
                                 //newItemMap.put("date", Utils.getDate());
 
                                 String date = Long.toString(System.currentTimeMillis());

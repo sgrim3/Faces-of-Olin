@@ -13,14 +13,16 @@ public class Story {
     private String story_title;
     private String image_url;
     private String image_caption;
+    private String author;
 
-    public Story(String time, String location, String story_text, String stpry_title, String image_url, String image_caption) {
+    public Story(String time, String location, String story_text, String stpry_title, String image_url, String image_caption, String author) {
         this.time = time;
         this.location = location;
         this.story_text = story_text;
         this.story_title = story_title;
         this.image_url = image_url;
         this.image_caption = image_caption;
+        this.author = author;
     }
 
     public String get_time() {
@@ -42,4 +44,6 @@ public class Story {
     public String get_image_url() { return image_url; }
 
     public String get_image_caption() { return image_caption; }
+
+    public String get_author() { return author; }
 }

@@ -39,11 +39,15 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     String filepath = "";
 
+    public String username;
+
     private ArrayList<android.app.Fragment> activeFragments = new ArrayList<android.app.Fragment>();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        username = getIntent().getExtras().getString("username");
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -173,5 +177,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

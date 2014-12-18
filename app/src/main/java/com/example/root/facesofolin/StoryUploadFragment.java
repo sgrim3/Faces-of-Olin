@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -93,13 +94,14 @@ public class StoryUploadFragment extends DialogFragment {
         uploadStoryButton.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick (View view) {
-                    Map<String, String> newItemMap = new HashMap<String, String>();
-                    Map<String, Map<String, String>> newTitle = new HashMap<String, Map<String, String>>();
+                        Map<String, String> newItemMap = new HashMap<String, String>();
+                        Map<String, Map<String, String>> newTitle = new HashMap<String, Map<String, String>>();
 
                         newItemMap.put("story_text", storyTextEditText.getText().toString());
                         newItemMap.put ("story_title", storyTitleEditText.getText().toString());
                         newItemMap.put("image_url", "");
                         newItemMap.put("image_caption", "");
+                        newItemMap.put("author", ((MainActivity)getActivity()).getUsername());
 //                        newItemMap.put("tags", storyTagEditText.getText().toString());
                         newItemMap.put("location", storyLocationEditText.getText().toString());
 //                        newItemMap.put("date", Utils.getDate());

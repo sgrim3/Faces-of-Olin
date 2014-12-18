@@ -52,6 +52,7 @@ public class StoryViewFragment extends DialogFragment {
         storyText.setText(story.get_storytext());
         storyLocation.setText(story.get_location());
         imageCaption.setText(story.get_image_caption());
+        author.setText(story.get_author());
 
 
         //Get image

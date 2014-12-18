@@ -7,10 +7,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.facebook.Request;
+import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.android.Facebook;
+import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
 
 import java.util.Arrays;
@@ -19,6 +23,8 @@ import java.util.Arrays;
 public class LoginFragment extends Fragment {
     private UiLifecycleHelper uiHelper;
     private boolean loggedIn = false;
+    private String username;
+
 
     private Session.StatusCallback callback = new Session.StatusCallback(){
         @Override
@@ -91,15 +97,23 @@ public class LoginFragment extends Fragment {
         if (state.isOpened()) {
             Log.i("Debugging", "Logged in");
 
-            if(!loggedIn) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-            }
-            loggedIn = true;
+            Request.newMeRequest(session, new Request.GraphUserCallback() {
+                @Override
+                public void onCompleted(GraphUser user, Response response) {
+                    if(!loggedIn && user != null) {
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        username = user.getName();
+                        intent.putExtra("username", username);
+                        startActivity(intent);
+                    }
+                    loggedIn = true;
+                }
+            }).executeAsync();
         }
         else if (state.isClosed()) {
             Log.i("Debugging", "Logged out");
             loggedIn = false;
         }
+
     }
 }
