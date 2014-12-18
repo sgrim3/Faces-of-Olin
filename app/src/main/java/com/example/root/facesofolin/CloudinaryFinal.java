@@ -15,25 +15,23 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
-
-/**
- * Created by sihrc on 12/14/14.
- */
 public class CloudinaryFinal extends StringRequest {
     // Path to the picture
     String picturePath;
 
 
     public CloudinaryFinal(String picturePath, final StringCallback callback) {
+
+        //start volley http post request to cloudinary
         super(Method.POST, "https://api.cloudinary.com/v1_1/djovbfmav/image/upload", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
+                    //create JSONobject
                     JSONObject res = new JSONObject(response);
                     callback.gotURL(res.getString("url"));
                 } catch (JSONException e) {
@@ -66,10 +64,14 @@ public class CloudinaryFinal extends StringRequest {
         bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
         byte[] b = baos.toByteArray();
 
+        //populating parameters for image upload
         params.put("file", "data:image/jpeg;base64," + Base64.encodeToString(b, Base64.DEFAULT));
+
+        //get timestamp
         String timestamp = String.valueOf(System.currentTimeMillis());
         params.put("timestamp", timestamp);
         try {
+            //creating signature according to cloudinary's requirements
             params.put("signature", Utils.SHA1("timestamp=" + timestamp + "xPE3O1CPu04ryh5uHj_TvI4xcc0"));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();

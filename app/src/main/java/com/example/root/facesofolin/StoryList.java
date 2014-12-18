@@ -17,6 +17,11 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 
 public class StoryList extends Fragment {
+    /**
+     * Defines the list in which uploaded stories are shown
+     * With each story's attributes being filled in via Firebase
+     */
+
     private MainActivity activity;
     private ArrayList<Story> allStories = new ArrayList<Story>();
     private ArrayList<String> allTitles = new ArrayList<String>();
@@ -30,17 +35,20 @@ public class StoryList extends Fragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
 
+        //Inflate view
         final View rootView = inflater.inflate(R.layout.fragment_story_list, container, false);
 
+        //Get list adapter
         final CustomList adapter = new CustomList(this.getActivity(), allStories, allTitles);
 
+        //Initialize Firebase
         final Firebase firebase = new Firebase("https://boiling-inferno-4244.firebaseio.com/");
-
         firebase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int counter = 0;
 
+                //Fill in the values stored on Firebase for each story
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     String time = child.getKey();
                     String story_text = child.child("story_text").getValue().toString();
@@ -74,11 +82,11 @@ public class StoryList extends Fragment {
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
+            //When an item is clicked, show its StoryViewFragment
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 StoryViewFragment myDiag=new StoryViewFragment(allStories.get(position));
                 myDiag.show(getFragmentManager(),"Diag");
-
             }
         });
 

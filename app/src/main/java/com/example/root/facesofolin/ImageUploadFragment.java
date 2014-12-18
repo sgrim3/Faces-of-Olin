@@ -38,6 +38,8 @@ public class ImageUploadFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.fragment_image_upload, container, false);
+
+        //initalize views from xml
         final EditText imageTitleEditText = (EditText) rootView.findViewById(R.id.title_image);
         final Button uploadImageButton = (Button) rootView.findViewById(R.id.upload_image);
         final EditText imageCaptionEditText = (EditText) rootView.findViewById(R.id.caption_text);
@@ -46,9 +48,9 @@ public class ImageUploadFragment extends DialogFragment {
 
 
 //      code from "http://stackoverflow.com/questions/4181774/show-image-view-from-file-path-in-android"
-        File imgFile = new File(activity.filepath);
-        Log.v("ImageUploadFile",activity.filepath);
 
+        //showing image thumbnail from file
+        File imgFile = new File(activity.filepath);
         if(imgFile.exists()){
 
             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
@@ -63,7 +65,7 @@ public class ImageUploadFragment extends DialogFragment {
         uploadImageButton.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick (View view) {
-                        //TODO-get filepath from UploadHome
+                        //uploading image and edittext values to firebase
                        App.requestQueue.add(new CloudinaryFinal(activity.filepath, new StringCallback() {
                             @Override
                             public void gotURL(String url) {
@@ -77,17 +79,16 @@ public class ImageUploadFragment extends DialogFragment {
                                 newItemMap.put("author", ((MainActivity)getActivity()).getUsername());
 
                                 String date = Long.toString(System.currentTimeMillis());
-                                Log.v ("date", Utils.getTimestamp());
                                 firebase.child (date).setValue(newItemMap);
+
+                                //close dialog
                                 getDialog().dismiss();
 
                             }
 
                         }));
-
                     }
         });
-
 
         return rootView;
     }

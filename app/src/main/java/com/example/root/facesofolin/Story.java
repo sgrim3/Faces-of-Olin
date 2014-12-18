@@ -1,8 +1,5 @@
 package com.example.root.facesofolin;
 
-/**
- * Created by root on 11/10/14.
- */
 
 public class Story {
     // Encodes all the information for a typical story
@@ -24,9 +21,8 @@ public class Story {
         this.author = author;
     }
 
-    public String get_time() {
-        return time;
-    }
+    // Getter functions to return story values
+    public String get_time() { return time; }
 
     public String get_location() {
         return location;

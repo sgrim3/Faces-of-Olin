@@ -1,12 +1,10 @@
 package com.example.root.facesofolin;
 
-
-//import packages
+//Import packages
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +12,16 @@ import android.widget.Button;
 
 public class UploadHome extends Fragment {
 
-    //initialize variables
+    /**
+     * Fragment which allows the user to choose whether they want
+     * To upload a picture or write a story
+     */
+
+    //Initialize variables
     public static final int RESULT_LOAD_IMAGE = 1;
     public String filepath = "words";
 
     MainActivity activity;
-
 
 
     @Override
@@ -28,13 +30,11 @@ public class UploadHome extends Fragment {
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.fragment_upload_home, container, false);
 
-        //Initiate all the buttons!
+        //Initiate all the buttons
         final Button storyButton = (Button) rootView.findViewById(R.id.story_button);
-//        final Button takePicButton = (Button) rootView.findViewById(R.id.take_picture_button);
         final Button uploadPicButton = (Button) rootView.findViewById(R.id.choose_picture_button);
 
-
-        //when the story button is pressed
+        //When the story button is pressed
         storyButton.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View view) {
@@ -44,7 +44,7 @@ public class UploadHome extends Fragment {
                     }
                 });
 
-        //when the choose picture button is pressed
+        //When the choose picture button is pressed
         uploadPicButton.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View view) {
@@ -64,10 +64,11 @@ public class UploadHome extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == Activity.RESULT_OK && null != data) {
-            filepath = MediaUtils.pickPicture(activity,data);
+            //Saving filepath
+            filepath = Utils.pickPicture(activity,data);
             activity.filepath = filepath;
-            Log.v ("upload", filepath);
 
+            //Open imageupload dialog
             ImageUploadFragment myDiag=new ImageUploadFragment();
             myDiag.show(getFragmentManager(),"Diag");
 
