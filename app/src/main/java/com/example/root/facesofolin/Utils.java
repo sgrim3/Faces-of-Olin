@@ -118,7 +118,7 @@ public class Utils {
         }
     }
 
-
+//from https://androidresearch.wordpress.com/2014/02/01/android-volley-tutorial/
 
     public static class BitmapLruCache
             extends LruCache<String, Bitmap>

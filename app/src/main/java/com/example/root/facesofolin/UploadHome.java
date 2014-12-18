@@ -73,9 +73,12 @@ public class UploadHome extends Fragment {
                         //switch to camera
                         // create Intent to take a picture and return control to the calling application
                         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        fileUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".png"));
-//                        fileUri = MediaUtils.getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
-                        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
+//                        File file = new File (Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".png");
+
+//                        fileUri = Uri.fromFile(file);
+                        fileUri = MediaUtils.getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri.toString()); // set the image file name
+                        Log.v("takePicButton", fileUri.toString());
                         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
                     }
@@ -101,16 +104,10 @@ public class UploadHome extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == Activity.RESULT_OK && null != data) {
-            Log.v("picture1", filepath);
             filepath = MediaUtils.pickPicture(activity,data);
             activity.filepath = filepath;
+            Log.v ("upload", filepath);
 
-//            App.requestQueue.add(new CloudinaryFinal(filepath, new StringCallback() {
-//                @Override
-//                public void gotURL(String url) {
-//                    Log.v("thing", "thing");
-//                }
-//            }));
             ImageUploadFragment myDiag=new ImageUploadFragment();
             myDiag.show(getFragmentManager(),"Diag");
 
@@ -121,10 +118,14 @@ public class UploadHome extends Fragment {
                 // Image captured and saved to fileUri specified in the Intent
                 Toast.makeText(activity, "Image saved to:\n" +
                         fileUri, Toast.LENGTH_LONG).show();
+                activity.filepath = fileUri.toString();
 
-                //TODO- send fileUri.toString() to imageUpload dialog
-                //fileUri = name of filepath that pic was saved to
-//                activity.switchFragment(new ImageUploadFragment());
+                Log.v("picture", activity.filepath);
+
+                ImageUploadFragment myDiag=new ImageUploadFragment();
+                myDiag.show(getFragmentManager(),"Diag");
+
+
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 // User cancelled the image capture
             } else {
